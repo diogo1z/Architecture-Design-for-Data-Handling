@@ -6,7 +6,7 @@ This microservice provides two primary functionalities:
 - `POST /data`: Accepts and validates JSON data before storing it in a database.
 - `GET /data`: Retrieves stored data with fast read performance.
 
-The microservice is built with [TypeScript (Node.js)] and follows a scalable, performant architecture designed to handle millions of data records efficiently.
+The microservice is built with TypeScript (Node.js) and follows a scalable, performant architecture designed to handle millions of data records efficiently.
 
 ## Technology Stack
 - **Language**: TypeScript (Node.js)
