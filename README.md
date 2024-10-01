@@ -76,6 +76,37 @@ Each component also has its corresponding test file to ensure robust unit testin
     ```bash
     npm run start
     ```
+### Run the databases
+1. Build the Docker image:
+    ```bash
+    docker-compose up
+    ```
+2. Execute the migrations:
+   ```bash
+    npm run migration
+    ```
+- **Database Docker Compose**: The following configuration spins up Postgres and Redis containers with UI tools (Pgweb and Redis Commander).
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: data-api
+    spec:
+      replicas: 3
+      selector:
+        matchLabels:
+          app: data-api
+      template:
+        metadata:
+          labels:
+            app: data-api
+        spec:
+          containers:
+          - name: api-container
+            image: data-api:{{commitSHA}}
+            ports:
+            - containerPort: 3000
+    ```
 
 ### Docker Setup
 1. Build the Docker image:
