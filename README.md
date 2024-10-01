@@ -64,8 +64,8 @@ Each component also has its corresponding test file to ensure robust unit testin
 ### Local Development Setup
 1. Clone the repository:
     ```bash
-    git clone https://github.com/diogo1z/microservice-design.git
-    cd microservice-design
+    git clone https://github.com/domain/data-api.git
+    cd data-api
     ```
 2. Install dependencies:
     ```bash
@@ -80,11 +80,11 @@ Each component also has its corresponding test file to ensure robust unit testin
 ### Docker Setup
 1. Build the Docker image:
     ```bash
-    docker build -t microservice-api .
+    docker build -t data-api .
     ```
 2. Run the container:
     ```bash
-    docker run -p 3000:3000 microservice-api
+    docker run -p 3000:3000 data-api
     ```
 
 ---
@@ -213,7 +213,7 @@ The following actions are performed in the pipeline:
 - **Unit Testing**: Verifies that the code works correctly.
 - **Linting**: Ensures code quality and follows best practices.
 - **Docker Build & Push**: Builds the Docker image and pushes it to a container registry.
-- **E2E Tests**: Ensures the service as all it's working correctly.
+- **E2E Tests**: Ensures the service is all it's working correctly.
 - **Kubernetes Deployment**: Deploys the Docker image to a Kubernetes cluster.
 
 
@@ -224,7 +224,7 @@ The following actions are performed in the pipeline:
 The microservice will be deployed in a Kubernetes environment using the following resources:
 - **Deployment**: Manages replicas and ensures the service is running.
 - **Service**: Exposes the service internally to other components or externally via Ingress.
-- **Ingress**: Provides access to the service via an HTTPs endpoint.
+- **Ingress**: Provides access to the service via an HTTP endpoint.
 
 ### Kubernetes Manifests
 
