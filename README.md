@@ -77,7 +77,7 @@ Each component also has its corresponding test file to ensure robust unit testin
     npm run start
     ```
 ### Run the databases
-1. Build the Docker image:
+1. Run the Docker Compose image:
     ```bash
     docker-compose up
     ```
@@ -85,6 +85,7 @@ Each component also has its corresponding test file to ensure robust unit testin
    ```bash
     npm run migration
     ```
+
 - **Database Docker Compose**: The following configuration spins up Postgres and Redis containers with UI tools (Pgweb and Redis Commander).
     ```yaml
     apiVersion: apps/v1
