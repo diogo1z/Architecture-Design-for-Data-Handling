@@ -89,7 +89,7 @@ Each component also has its corresponding test file to ensure robust unit testin
 
 ---
 
-## Build, Test, and Deploy Instructions
+## Build, and Test Instructions
 
 ### Build
 To build the microservice locally:
