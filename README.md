@@ -203,7 +203,7 @@ The CI/CD pipeline automates the process of building, testing, and deploying the
 5. **Kubernetes Deployment**: The latest image is deployed to a Kubernetes cluster using `kubectl`.
 
 ### Pipeline Diagram
-![CI/CD Pipeline Diagram](./diagrams/ci-cd-pipeline.drawio.png)
+![CI/CD Pipeline Diagram](./diagrams/cicd-flow.png)
 
 ---
 
