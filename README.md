@@ -88,25 +88,56 @@ Each component also has its corresponding test file to ensure robust unit testin
 
 - **Database Docker Compose**: The following configuration spins up Postgres and Redis containers with UI tools (Pgweb and Redis Commander).
     ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: data-api
-    spec:
-      replicas: 3
-      selector:
-        matchLabels:
-          app: data-api
-      template:
-        metadata:
-          labels:
-            app: data-api
-        spec:
-          containers:
-          - name: api-container
-            image: data-api:{{commitSHA}}
-            ports:
-            - containerPort: 3000
+# docker-compose.yml
+version: '3.8'
+services:
+  postgres:
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: database-name
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: username
+    ports:
+      - 5435:5432
+    restart: on-failure:3
+  pgweb:
+    image: sosedoff/pgweb
+    depends_on:
+      - postgres
+    environment:
+      PGWEB_DATABASE_URL: postgres://username:password@postgres:5432/database-name?sslmode=disable
+    ports:
+      - 8085:8081
+    restart: on-failure:3
+  redis:
+    image: redis:latest
+    command: redis-server
+    volumes:
+      - redis:/var/lib/redis
+      - redis-config:/usr/local/etc/redis/redis.conf
+    ports:
+      - 6379:6379
+    networks:
+      - redis-network
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - HTTP_USER=root
+      - HTTP_PASSWORD=qwerty
+    ports:
+      - 8081:8081
+    networks:
+      - redis-network
+    depends_on:
+      - redis
+volumes:
+  redis:
+  redis-config:
+networks:
+  redis-network:
+    driver: bridge
+
     ```
 
 ### Docker Setup
